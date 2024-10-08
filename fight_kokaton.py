@@ -10,7 +10,6 @@ HEIGHT = 650  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-
 def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
     """
     オブジェクトが画面内or画面外を判定し，真理値タプルを返す関数
@@ -23,7 +22,6 @@ def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
     if obj_rct.top < 0 or HEIGHT < obj_rct.bottom:
         tate = False
     return yoko, tate
-
 
 class Bird:
     """
@@ -83,7 +81,6 @@ class Bird:
         if not (sum_mv[0] == 0 and sum_mv[1] == 0):
             self.img = __class__.imgs[tuple(sum_mv)]
         screen.blit(self.img, self.rct)
-
 
 class Beam:
     """
@@ -191,9 +188,7 @@ def main():
                     beams.remove(beam)
                     bird.change_img(6,screen)
                     pg.display.update()
-                    score.score +=1
-                    
-                
+                    score.score +=1   
 
         bombs = [bomb for bomb in bombs if bomb is not None]
         beams = [beam for beam in beams if check_bound(beam.rct)[0]]
@@ -209,7 +204,6 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
-
 
 if __name__ == "__main__":
     pg.init()
